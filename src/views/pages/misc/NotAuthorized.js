@@ -14,6 +14,10 @@ const NotAuthorized = () => {
   // ** Hooks
   const { skin } = useSkin()
 
+  const reset = () => {
+    localStorage.clear()
+  }
+
   const illustration = skin === 'dark' ? 'not-authorized-dark.svg' : 'not-authorized.svg',
     source = require(`@src/assets/images/pages/${illustration}`).default
   return (
@@ -76,7 +80,7 @@ const NotAuthorized = () => {
             The Webtrends Marketing Lab website in IIS uses the default IUSR account credentials to access the web pages
             it serves.
           </p>
-          <Button tag={Link} to='/' color='primary' className='btn-sm-block mb-1'>
+          <Button tag={Link} to='/' color='primary' className='btn-sm-block mb-1' onClick={reset}>
             Back to Home
           </Button>
           <img className='img-fluid' src={source} alt='Not authorized page' />

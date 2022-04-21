@@ -65,9 +65,9 @@ const Login = () => {
       useJwt
         .login({ email: data.loginEmail, password: data.password })
         .then(res => {
-          const data = { ...res.data.data.user, accessToken: res.data.data.token, refreshToken: res.data.data.refreshToken ?? res.data.data.token }
+          const data = { ...res.data.user, accessToken: res.data.token, refreshToken: res.data.refreshToken ?? res.data.token }
           dispatch(handleLogin(data))
-          ability.update(res.data.data.user.ability ?? [
+          ability.update(res.data.user.ability ?? [
             {
               action: "manage",
               subject: "all"
