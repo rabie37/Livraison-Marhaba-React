@@ -17,7 +17,7 @@ export const createCategory = data => {
 export const infoCategory = id => {
     const config = {
         method: 'get',
-        url: `http://localhost:5000/api/category/${id}`,
+        url: `http://localhost:5000/api/category/list`,
         headers: {
             Authorization: jwt.getToken()
         }

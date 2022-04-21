@@ -18,14 +18,14 @@ export const getData = createAsyncThunk('datatables/getData', async params => {
     let response = []
 
     try {
-        response = await axios.get('http://localhost:5000/api/user/list')
+        response = await axios.get('http://localhost:5000/api/category/list')
     } catch (error) {
         console.log(error)
     }
 
     console.log('response : ', response)
 
-    const data = response.data.user
+    const data = response.data
 
     return { allData: data, data: data, totalPages: data.length, params }
 })
