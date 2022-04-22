@@ -69,6 +69,7 @@ export const serverSideColumns = [
         sortable: true,
         name: 'Status',
         selector: row => {
+            console.log('row.status : ', row.status) 
             return status[row.status].title
         }
     },

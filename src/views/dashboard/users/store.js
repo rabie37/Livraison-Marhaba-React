@@ -23,7 +23,7 @@ export const getData = createAsyncThunk('datatables/getData', async params => {
         console.log(error)
     }
 
-    console.log('response : ', response)
+    console.log('response users : ', response)
 
     const data = response.data.user
 

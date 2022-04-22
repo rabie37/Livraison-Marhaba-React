@@ -3,4 +3,4 @@ import users from './users'
 import categorys from './categorys'
 
 // ** Merge & Export
-export default [...users,...categorys]
+export default [...users, ...categorys]
