@@ -1,7 +1,7 @@
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, Row, Col, Input, Form, Button, Label } from 'reactstrap'
 import { useForm, Controller } from 'react-hook-form'
-import { updateCategory, infoCategory } from '../../../services/categorys'
+import { updateProduct, infoProduct } from '../../../services/products'
 import { useHistory, useParams } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Coffee } from 'react-feather'
@@ -17,7 +17,7 @@ const ToastContent = () => (
       </div>
     </div>
     <div className='toastify-body'>
-      <span>Category Updated</span>
+      <span>Product Updated</span>
     </div>
   </Fragment>
 )
@@ -34,10 +34,12 @@ const CreateForm = () => {
   console.log("id : ", id)
 
   //? get info of category and set in form
-  infoCategory(id)
+  infoProduct(id)
     .then(function (response) {
-      console.log('Response Info Category : ', response)
+      console.log('Response Info Product : ', response)
       setValue("name", response.data.name)
+      setValue("price", response.data.price)
+      setValue("description", response.data.decsreption)
     })
     .catch(function (error) {
       console.log(error)
@@ -48,11 +50,11 @@ const CreateForm = () => {
   const onSubmit = data => {
     console.log(data)
 
-    updateCategory(id, data)
+    updateProduct(id, data)
       .then(function (response) {
         console.log((response))
 
-        history.push('/categorys/table')
+        history.push('/products/table')
         toast.success(
           <ToastContent />,
           { icon: false, transition: Slide, hideProgressBar: true, autoClose: 2000 }
@@ -67,7 +69,7 @@ const CreateForm = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle tag='h4'>Category Edit Form</CardTitle>
+        <CardTitle tag='h4'>Product Edit Form</CardTitle>
       </CardHeader>
 
       <CardBody>
@@ -92,6 +94,45 @@ const CreateForm = () => {
                 )}
               />
             </Col>
+            <Col md='6' sm='12' className='mb-1'>
+              <Label className='form-label' for='price'>
+                Price
+              </Label>
+              <Controller
+                id='price'
+                name='price'
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    autoFocus
+                    type='number'
+                    placeholder='price...'
+                    invalid={errors.price && true}
+                    {...field}
+                  />
+                )}
+              />
+            </Col>
+            <Col md='12' sm='12' className='mb-1'>
+              <Label className='form-label' for='decsription'>
+                Decsription
+              </Label>
+              <Controller
+                id='decsription'
+                name='decsription'
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    autoFocus
+                    type='text'
+                    placeholder='Decsription...'
+                    invalid={errors.decsription && true}
+                    {...field}
+                  />
+                )}
+              />
+            </Col>
+            
 
             <Col sm='12'>
               <div className='d-flex'>

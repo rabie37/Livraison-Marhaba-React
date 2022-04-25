@@ -33,7 +33,7 @@ const CreateForm = () => {
 
   const onSubmit = data => {
     console.log(data)
-    createCategory(data)
+    createCommand(data)
       .then(function (response) {
         console.log((response))
 

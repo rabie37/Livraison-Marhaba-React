@@ -1,7 +1,7 @@
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, Row, Col, Input, Form, Button, Label } from 'reactstrap'
 import { useForm, Controller } from 'react-hook-form'
-import { updateCategory, infoCategory } from '../../../services/categorys'
+import { updateCommand, infoCommand } from '../../../services/commands'
 import { useHistory, useParams } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Coffee } from 'react-feather'
@@ -17,7 +17,7 @@ const ToastContent = () => (
       </div>
     </div>
     <div className='toastify-body'>
-      <span>Category Updated</span>
+      <span>Command Updated</span>
     </div>
   </Fragment>
 )
@@ -34,7 +34,7 @@ const CreateForm = () => {
   console.log("id : ", id)
 
   //? get info of command and set in form
-  infoCategory(id)
+  infoCommand(id)
     .then(function (response) {
       console.log('Response Info Command : ', response)
       setValue("name", response.data.name)

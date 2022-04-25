@@ -129,7 +129,7 @@ const DataTableServerSide = () => {
     <Fragment>
       <Card>
         <CardHeader className='border-bottom'>
-          <CardTitle tag='h4'>Category List</CardTitle>
+          <CardTitle tag='h4'>Commands List</CardTitle>
         </CardHeader>
         <Row className='mx-0 mt-1 mb-50'>
           <Col sm='6'>
